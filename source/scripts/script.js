@@ -20,6 +20,7 @@ function showStart() {
 	sliderContact.className = "sliderContact disabled";
 
 	console.log("showStart");
+	doSlider();
 }
 
 function showDesign() {
@@ -36,6 +37,7 @@ function showDesign() {
 	sliderContact.className = "sliderContact disabled";
 
 	console.log("showDesign");
+	doSlider();
 }
 
 function showCoding() {
@@ -52,6 +54,7 @@ function showCoding() {
 	sliderContact.className = "sliderContact disabled";
 
 	console.log("showCoding");
+	doSlider();
 }
 
 function showAbout() {
@@ -68,6 +71,7 @@ function showAbout() {
 	sliderContact.className = "sliderContact disabled";
 
 	console.log("showAbout");
+	doSlider();
 }
 
 function showContact() {
@@ -84,28 +88,23 @@ function showContact() {
 	sliderContact.className = "sliderContact active";
 
 	console.log("showContact");
+	doSlider();
 }
 
-/* sildemenu **************************************************************/
-
-(function() {
-	let nav = document.querySelector("nav");
-	menu_trigger = document.getElementsByClassName('menu-trigger')[0];
-
-	if ( typeof menu_trigger !== 'undefined' ) {
-		menu_trigger.addEventListener('click', function() {
-			nav.className = ( nav.className == 'menu-active' )? '' : 'menu-active';
-			console.log("open-slider");
-		});
-	}
-
-
-}).call(this);
 
 
 /************************************************/
+const trigger = document.querySelector(".menu-trigger");
+const nav = document.querySelector("nav");
+const content = document.querySelector("main");
 
+trigger.addEventListener("click", doSlider);
 
+function doSlider(){
+	nav.className = (nav.className == 'menu-active') ? '' : 'menu-active';
+	content.className = (content.className == 'blur') ? '' : 'blur';
+	console.log("doSlider()");
+};
 
 
 
