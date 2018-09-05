@@ -34,12 +34,9 @@ body {
   color: #333;
   position: relative; }
 
-body:scrollbar {
-  display: none; }
-
 header {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -53,7 +50,7 @@ header {
 
 .logo {
   background-color: #FF530D;
-  width: calc(15vw + 1em);
+  width: calc(12vw + 1em);
   min-width: 190px;
   color: #ffffff;
   font-family: "OpenSans-Bold", "sans-serif";
@@ -73,7 +70,7 @@ header {
     display: block;
     background-color: white;
     height: 100%;
-    width: 0vw;
+    width: 0;
     -webkit-transition: all .5s;
     transition: all .5s;
     z-index: 10; }
@@ -85,14 +82,14 @@ header {
       font-size: 1.5em; } }
 
 main {
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   -webkit-transition: all .5s;
   transition: all .5s; }
 
 footer {
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 1em;
@@ -196,7 +193,7 @@ footer {
     display: grid;
     grid-template-rows: -webkit-min-content -webkit-min-content;
     grid-template-rows: min-content min-content;
-    grid-template-columns: minmax(calc(190px - 1em), 15vw) 1fr;
+    grid-template-columns: minmax(calc(190px - 1em), 12vw) 1fr;
     grid-gap: 1em;
     position: relative;
     padding-top: 1em; }
@@ -362,3 +359,83 @@ footer {
           animation-name: load-block3;
   grid-column: 5/6;
   background-color: white; }
+
+form {
+  padding: 1em; }
+
+.inp {
+  position: relative; }
+  .inp .label, .inp .label-message {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    font-size: 16px;
+    color: #333;
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease; }
+  .inp .border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease; }
+  .inp input, .inp textarea {
+    -webkit-appearance: none;
+    width: 100%;
+    border: 0;
+    padding: 2em 1em 1em;
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    background: none;
+    color: #333;
+    margin-top: 1em;
+    height: 3em;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease; }
+    .inp input:hover, .inp textarea:hover {
+      background: rgba(34, 50, 84, 0.03); }
+    .inp input:not(:placeholder-shown) + span, .inp textarea:not(:placeholder-shown) + span {
+      color: #5A667F;
+      -webkit-transform: translateY(-26px) scale(0.75);
+              transform: translateY(-26px) scale(0.75); }
+    .inp input:focus, .inp textarea:focus {
+      background: none;
+      outline: none; }
+      .inp input:focus + span, .inp textarea:focus + span {
+        -webkit-transform: translateY(-26px) scale(0.75);
+                transform: translateY(-26px) scale(0.75); }
+        .inp input:focus + span + .border, .inp textarea:focus + span + .border {
+          -webkit-transform: scaleX(1);
+                  transform: scaleX(1); }
+  .inp textarea {
+    height: auto;
+    font-family: inherit; }
+  .inp .label-message {
+    top: 0; }
+
+input[type="submit"] {
+  width: 100%;
+  margin: 1em 0;
+  padding: 1em;
+  font-size: 16px;
+  line-heightheight: 3rem;
+  border: none;
+  -webkit-transition: all .15s ease;
+  transition: all .15s ease; }
+  input[type="submit"]:hover {
+    background-color: #FF530D;
+    color: white; }
+  input[type="submit"]:focus {
+    background-color: #FF530D;
+    color: white; }
+
+.radio-label {
+  padding: 1em; }

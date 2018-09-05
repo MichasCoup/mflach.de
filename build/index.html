@@ -6,24 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
 </head>
- <header >
+<body>
+<div id="top"></div>
+ <header>
   <div class="logo">
    <span>mflach.de</span>
   </div>
   <a class="menu-trigger"><i class="fas fa-times"></i> &equiv;</a>
   <nav>
    <ul>
-    <li class="start">Start</li>
-    <li class="design">Design</li>
-    <li class="coding">Coding</li>
-    <li class="about">About</li>
-    <li class="contact">Kontakt</li>
+    <li class="start"><a href="#top">Start</a></li>
+    <li class="design"><a href="#top">Design</a></li>
+    <li class="coding"><a href="#top">Coding</a></li>
+    <li class="about"><a href="#top">About</a></li>
+    <li class="contact"><a href="#top">Kontakt</a></li>
    </ul>
   </nav>
  </header>
  <main>
   <article>
-    <div class="sliderStart active">
+    <div class="sliderStart disabled">
      <div class="img-holder"><img src="https://images.pexels.com/photos/1356304/pexels-photo-1356304.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="#"></div>
      <div class="title">
       <h1>Michael Flach<br> Medienproduktion</h1>
@@ -175,43 +177,47 @@
       </p>
      </div>
     </div>
-    <div class="sliderContact disabled">
+    <div class="sliderContact active">
      <div class="img-holder"><img src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="#"></div>
      <div class="title">
       <h1>Kontakt</h1>
      </div>
-<!-- <div class="description">
-      <p>
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät
-       in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade
-       jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer
-       seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die
-       Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen
-       Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-       Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte
-       er den schmalen Durchgang.
-      </p>
-      <p>
-       Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er
-       dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der
-       Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem
-       kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er
-       sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit
-       und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst?
-       Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als
-       plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang.
-      </p>
-      <p>
-       Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich
-       auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in
-       der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt,
-       wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner
-       zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner
-       Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter
-       dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-      </p>
-     </div>-->
+<div class="description">
+      <form action="" method="post">
+          <span>Anrede:</span>
+
+          <label class="radio-label" for="male">Herr</label><input id="male" name="type" type="radio" value="male">
+          <label class="radio-label" for="female">Frau</label><input id="female" name="type" type="radio" value="female">
+          <label class="radio-label" for="other">Andere</label><input id="other" name="type" type="radio" value="other"><br>
+
+          <label for="firstname" class="inp">
+              <input type="text" name="firstname" id="firstname" placeholder="&nbsp;">
+              <span class="label">Vorname:</span>
+          </label>
+
+          <label for="lastname" class="inp">
+              <input type="text" name="lastname" id="lastname" placeholder="&nbsp;">
+              <span class="label">Nachname:</span>
+          </label>
+
+          <label for="email" class="inp">
+              <input type="text" name="email" id="email" placeholder="&nbsp;">
+              <span class="label">E-Mail:</span>
+          </label>
+
+          <label for="phone" class="inp">
+              <input type="text" name="phone" id="phone" placeholder="&nbsp;">
+              <span class="label">Telefon:</span>
+          </label>
+
+          <label for="message" class="inp">
+              <span class="label-message">Ihre Nachricht</span>
+              <textarea name="message" id="message" placeholder="&nbsp;" rows="4"></textarea>
+          </label>
+
+          <input type="submit" value="Nachricht abschicken">
+      </form>
+     </div>
     </div>
   </article>
  </main>

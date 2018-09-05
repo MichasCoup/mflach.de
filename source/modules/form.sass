@@ -1,0 +1,73 @@
+form
+ padding: 1em
+.inp
+ position: relative
+
+ //transform: rotateX(45deg) rotateY(-10deg) rotate(25deg) scale(2)
+ .label, .label-message
+  position: absolute
+  top: 4px
+  left: 0
+  font-size: 16px
+  color: $color
+  transform-origin: 0 0
+  transition: all .2s ease
+ .border
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 2px
+  width: 100%
+  transform: scaleX(0)
+  transform-origin: 0 0
+  transition: all .15s ease
+ input, textarea
+  -webkit-appearance: none
+  width: 100%
+  border: 0
+  padding: 2em 1em 1em
+  font-size: 16px
+  border-bottom: 1px solid $color
+  background: none
+  color: $color
+  margin-top: 1em
+  height: 3em
+  transition: all .15s ease
+  &:hover
+   background: rgba(#223254,.03)
+  &:not(:placeholder-shown)
+   + span
+    color: #5A667F
+    transform: translateY(-26px) scale(.75)
+  &:focus
+   background: none
+   outline: none
+   + span
+    transform: translateY(-26px) scale(.75)
+    + .border
+     transform: scaleX(1)
+
+ textarea
+  height: auto
+  font-family: inherit
+ .label-message
+  top: 0
+
+input[type="submit"]
+ width: 100%
+ margin: 1em 0
+ padding: 1em
+ font-size: 16px
+ line-heightheight: 3rem
+ border: none
+ transition: all .15s ease
+ &:hover
+  background-color: $firColor
+  color: white
+ &:focus
+  background-color: $firColor
+  color: white
+
+
+.radio-label
+ padding: 1em
