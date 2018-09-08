@@ -1,0 +1,101 @@
+@import '../modules/variables.sass'
+@import '../modules/font.sass'
+//@import 'modules/font-awsome.sass'
+
+html
+ box-sizing: border-box
+	
+*, *:before, *:after
+ margin: 0
+ padding: 0
+ box-sizing: inherit
+a
+ text-decoration: none
+ color: inherit
+p
+ padding: 1em
+
+body
+ font-family: $font
+ color: $color
+ position: relative
+ background-image: url("../img/bg-portfolio.jpg")
+ background-size: cover
+ background-repeat: no-repeat
+ height: 100vh
+
+header
+ width: 100%
+ max-width: 1000px
+ margin: 0 auto 0
+ display: flex
+ justify-content: space-between
+ background-color: rgba(255,255,255, 0.7)
+
+.logo
+ background-color: $firColor
+ width: calc(12vw + 1em)
+ min-width: 190px
+ color: #ffffff
+ font-family: "OpenSans-Bold", "sans-serif"
+ padding: 1em
+ line-height: 2em
+
+main
+ max-width: 1000px
+ width: 100%
+ margin: 0 auto
+ transition: all .5s
+ background-color: rgba(255,255,255, 0.7)
+
+footer
+ max-width: 1000px
+ width: 100%
+ margin: 0 auto
+ padding-bottom: 1em
+ text-align: center
+ background-color: rgba(255,255,255, 0.7)
+ ul
+  display: flex
+  justify-content: space-around
+  li
+   display: inline-block
+   padding: 1em
+   line-height: 2em
+   cursor: pointer
+  li:hover
+   background-color: $firColor
+   color: #fff
+   transition: all .25s
+
+h1
+ font-size: 2em
+ margin: 0 auto
+ padding: .5rem
+
+.disabled
+ opacity: 0
+ display: none
+
+@keyframes fadeInLeft
+ 0%
+  opacity: 0
+  transform: translateX(20%)
+ 100%
+  opacity: 1
+  transform: translateX(0%)
+
+
+@keyframes revealRight
+ 0%
+  transform: scaleX(1)
+ 100%
+  transform: scaleX(0)
+.max-height
+ height: 100%
+.small-content
+ max-width: 360px
+
+// XXXXXXXXXXXX loader XXXXXXXXXXXX
+@import '../modules/loader.sass'
+@import '../modules/form.sass'

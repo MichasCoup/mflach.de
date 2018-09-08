@@ -184,11 +184,12 @@
      </div>
 <div class="description">
       <form action="" method="post">
-          <span>Anrede:</span>
 
-          <label class="radio-label" for="male">Herr</label><input id="male" name="type" type="radio" value="male">
-          <label class="radio-label" for="female">Frau</label><input id="female" name="type" type="radio" value="female">
-          <label class="radio-label" for="other">Andere</label><input id="other" name="type" type="radio" value="other"><br>
+       <span><input type="radio" name="gender" value="male" id="male"><label class="genders" for="male">Herr</label></span>
+       <span><input type="radio" name="gender" value="female" id="female"><label class="genders" for="female">Frau</label></span>
+       <span><input type="radio" name="gender" value="other" id="other"><label class="genders" for="other">Andere</label></span>
+
+       <br>
 
           <label for="firstname" class="inp">
               <input type="text" name="firstname" id="firstname" placeholder="&nbsp;">
@@ -211,19 +212,21 @@
           </label>
 
           <label for="message" class="inp">
-              <span class="label-message">Ihre Nachricht</span>
-              <textarea name="message" id="message" placeholder="&nbsp;" rows="4"></textarea>
+              <textarea name="message" id="message" placeholder="Ihre Nachricht" rows="4"></textarea>
           </label>
 
-          <input type="submit" value="Nachricht abschicken">
+          <input type="submit" name="formsent" value="Nachricht abschicken">
+          <input type="checkbox" id="true" name="true" value="true">
+          <label for="true">Ich stimme der Datenschutzreglung hiermit zu. </label>
       </form>
+
      </div>
     </div>
   </article>
  </main>
  <footer>
   <ul>
-   <li><a>Impressum</a></li>
+   <li><a href="impressum.html">Impressum</a></li>
    <li><a>Portfolio</a></li>
   </ul>
  </footer>

@@ -11,6 +11,7 @@ form
   font-size: 16px
   color: $color
   transform-origin: 0 0
+  padding-left: .5em
   transition: all .2s ease
  .border
   position: absolute
@@ -50,6 +51,7 @@ form
  textarea
   height: auto
   font-family: inherit
+  margin-top: 0
  .label-message
   top: 0
 
@@ -68,6 +70,31 @@ input[type="submit"]
   background-color: $firColor
   color: white
 
+select
+ font-family: inherit
+ font-size: 16px
+ width: 50%
+ border-top: none
+ border-left: none
+ border-right: none
+ border-bottom-color: $color
+ background-color: white
 
-.radio-label
- padding: 1em
+ option
+  font-size: 16px
+
+input[type="radio"]
+ display: none
+input[type="radio"]:checked ~ .genders
+ background-color: #FF530D
+ color: white
+
+.genders
+ border-bottom: 1px solid $color
+ margin-right: 1em
+ padding: .5em
+
+
+  background-color: #FF530D
+ input[type="radio"]
+  display: none
