@@ -268,7 +268,6 @@ input[type="radio"]:checked ~ .genders {
 .genders {
   border-bottom: 1px solid #333;
   margin-right: 1em;
-  padding: 0.5em;
-    padding-background-color: #FF530D; }
+  padding: .5em; }
   .genders input[type="radio"] {
     display: none; }

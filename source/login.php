@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -10,10 +14,9 @@
 <div id="top"></div>
 <header class="small-content">
     <div class="logo">
-        <span>mflach.de</span>
+        <span><a href="index.php">mflach.de</a></span>
     </div>
     <h1>Login</h1>
-
 </header>
 <main class="small-content">
     <article>
@@ -34,9 +37,9 @@
 </main>
 <footer class="small-content">
     <ul>
-        <li><a href="index.html">Startseite</a></li>
+        <li><a href="index.php">Startseite</a></li>
         <li><a href="">Datenschutz</a></li>
-        <li><a href="">Impressum</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
     </ul>
 </footer>
 <script src="scripts/script.js"></script>
