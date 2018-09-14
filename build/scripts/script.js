@@ -16,7 +16,7 @@ for (var i = 0; i < categories.length; i++) {
         var content = document.querySelectorAll(".slider");
         for (var j = 0; j < content.length; j++) {
             // and compare navigation-class and content-ids
-            if (this.className == content[j].id) {
+            if (this.className === content[j].id) {
                 // success, activate content
                 content[j].className = "slider active";
             } else {
@@ -25,8 +25,8 @@ for (var i = 0; i < categories.length; i++) {
             }
         }
 
-        nav.className = nav.className == 'menu-active' ? '' : 'menu-active';
-        main.className = main.className == 'blur' ? '' : 'blur';
+        nav.className = nav.className === 'menu-active' ? '' : 'menu-active';
+        main.className = main.className === 'blur' ? '' : 'blur';
     });
 }
 
@@ -36,8 +36,8 @@ var trigger = document.querySelector(".menu-trigger");
 trigger.addEventListener("click", doSlider);
 
 function doSlider() {
-    nav.className = nav.className == 'menu-active' ? '' : 'menu-active';
-    main.className = main.className == 'blur' ? '' : 'blur';
+    nav.className = nav.className === 'menu-active' ? '' : 'menu-active';
+    main.className = main.className === 'blur' ? '' : 'blur';
 }
 
 /* form validation *********************************************************/
@@ -45,83 +45,63 @@ function doSlider() {
 window.onload = function () {
     console.log("Validierungs-Funktion geladen");
 
-    var form = document.getElementsByTagName('form')[0];
     var firstname = document.getElementsByName('firstname')[0];
     var lastname = document.getElementsByName('lastname')[0];
     var email = document.getElementsByName('email')[0];
     var message = document.getElementsByName('message')[0];
     var phone = document.getElementsByName('phone')[0];
+    var sayYes = document.getElementsByName('true')[0].getAttribut;
     var error = document.querySelectorAll('.error');
-    var nameREGEX = /^(?=.{2,50}$)[a-zßäöüA-Z]+(?:['-_.\s][a-zßäöüA-Z]+)*$/i;
-    var emailREGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    var nameREGEX = /^(?=.{2,50}$)[a-zßäöüA-Z]+(?:['-.\s][a-zßäöüA-Z]+)*$/i;
+    var emailREGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/i;
     var phoneREGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
     firstname.addEventListener("focusout", function () {
-        console.log("focusout firstname");
-        if (firstname.value == "") {
-            error[1].innerHTML = "Dies ist ein Pflichtfeld, mit Javascript!";
+        if (firstname.value === "") {
+            error[0].innerHTML = "Dies ist ein Pflichtfeld";
         } else if (!nameREGEX.test(this.value)) {
-            console.log(this.id + ": " + this.value);
-            error[1].innerHTML = "Bitte überprüfen Sie Ihre Eingabe";
+            error[0].innerHTML = "Bitte überprüfen Sie Ihre Eingabe";
         } else {
-            console.log(this.id + ": " + this.value);
-            error[1].innerHTML = "";
+            error[0].innerHTML = "";
         }
     }, false);
 
     lastname.addEventListener("focusout", function () {
-        console.log("focusout lastname");
-        if (lastname.value == "") {
-            error[2].innerHTML = "Dies ist ein Pflichtfeld, mit Javascript!";
+        if (lastname.value === "") {
+            error[1].innerHTML = "Dies ist ein Pflichtfeld";
         } else if (!nameREGEX.test(this.value)) {
-            console.log(this.id + ": " + this.value);
-            error[2].innerHTML = "Bitte überprüfen Sie Ihre Eingabe";
+            error[1].innerHTML = "Bitte überprüfen Sie Ihre Eingabe";
         } else {
-            console.log(this.id + ": " + this.value);
-            error[2].innerHTML = "";
+            error[1].innerHTML = "";
         }
     }, false);
 
     email.addEventListener("focusout", function () {
-        console.log("focusout email");
-        if (email.value == "") {
-            error[3].innerHTML = "Dies ist ein Pflichtfeld, mit Javascript!";
+        if (email.value === "") {
+            error[2].innerHTML = "Dies ist ein Pflichtfeld";
         } else if (!emailREGEX.test(this.value)) {
-            console.log(this.id + ": " + this.value);
-            error[3].innerHTML = "Das ist keine gültigte E-Mail Adresse";
+            error[2].innerHTML = "Das ist keine gültigte E-Mail Adresse";
         } else {
-            console.log(this.id + ": " + this.value);
-            error[3].innerHTML = "";
+            error[2].innerHTML = "";
         }
     }, false);
 
     phone.addEventListener("focusout", function () {
-        console.log("focusout phone");
-        if (phone.value == "") {
-            error[4].innerHTML = "Dies ist ein Pflichtfeld, mit Javascript!";
+        if (phone.value === "") {
+            error[3].innerHTML = "Dies ist ein Pflichtfeld";
         } else if (!phoneREGEX.test(this.value)) {
-            console.log(this.id + ": " + this.value);
-            error[4].innerHTML = "Das ist keine gültige Telefonnummer";
+            error[3].innerHTML = "Das ist keine gültige Telefonnummer";
         } else {
-            console.log(this.id + ": " + this.value);
-            error[4].innerHTML = "";
+            error[3].innerHTML = "";
         }
     }, false);
 
     message.addEventListener("focusout", function () {
-        console.log("focusout message");
-        if (!message.validity.valid) {
-            error[5].innerHTML = "Dies ist ein Pflichtfeld, mit Javascript!";
+        if (message.value === "") {
+            error[4].innerHTML = "Dies ist ein Pflichtfeld";
         } else {
-            console.log(this.id + ": " + this.value);
-            error[5].innerHTML = "";
+            error[4].innerHTML = "";
         }
     }, false);
-
-    form.addEventListener("submit", function (event) {
-        if (!firstname || !lastname || !email || !phone || !message) {
-            event.preventDefault();
-        }
-    });
 };
 /* ***********************************************/

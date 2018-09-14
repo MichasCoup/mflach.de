@@ -55,7 +55,7 @@ if(DEBUG)   echo "<p class='debug'> Kontaktformular wurde abgeschickt</p>";
             $errorMessage = checkInputString($message, 50, 5000);
             $errorTrue = checkInputString($true);
 
-            if( $errorGender || $errorEmail || $errorFirstname || $errorLastname ||$errormessage || $errorPhone || $errorTrue ){
+            if( $errorEmail || $errorFirstname || $errorLastname || $errorMessage || $errorPhone || $errorTrue ){
                 // Fehlerfall
 if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde fehlerhaft ausgefüllt</p>";
             } else {
@@ -81,7 +81,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
                     $from = "From: Kontakt mflach.de <no-reply@mflach.de>\r\n";
                     $from .= "Reply-To: no-reply@mflach.de\r\n";
                     $from .= "Content-Type: text/html\r\n";
-                    $text = "<h2>Ihre Nachricht an mflach.de:</h2><br><p>".nl2br($message)."</p><br><br><p>Vielen Dank! Sobald es möglich ist, werden wir uns bei Ihnen melden.</p>";
+                    $text = "<h2>Ihre Nachricht an mflach.de:</h2><br><q>".nl2br($message)."</q><br><br><p>Vielen Dank! Sobald es möglich ist, werden wir uns bei Ihnen melden.</p>";
 
                     mail($to, $subject, $text, $from);
 
@@ -106,7 +106,6 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
-<div <!--id="top"--></div>
  <header>
   <div class="logo">
    <span>mflach.de</span>
@@ -289,7 +288,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
        <span><input type="radio" name="gender" value="male" id="male" <?php if($gender == "male") echo "checked" ?>><label class="genders" for="male">Herr</label></span>
        <span><input type="radio" name="gender" value="female" id="female" <?php if($gender == "female") echo "checked" ?>><label class="genders" for="female">Frau</label></span>
        <span><input type="radio" name="gender" value="other" id="other" <?php if($gender == "other") echo "checked" ?>><label class="genders" for="other">Andere</label></span>
-          <span class="error"><?= $errorGender ?></span><br>
+          <br>
 
           <label for="firstname" class="inp">
               <input type="text" name="firstname" id="firstname" value="<?= $firstname ?>" placeholder="&nbsp;" >
@@ -314,11 +313,11 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
           <label for="message" class="inp">
               <textarea name="message" id="message" placeholder="Ihre Nachricht" rows="4" required><?= $message ?></textarea>
               <span class="error"><?= $errorMessage ?></span>
-          </label>
+          </label><br>
 
           <input type="submit" name="formsent" value="Nachricht abschicken">
           <input type="checkbox" id="true" name="true" value="true" <?php if($true == "true") echo "checked" ?> >
-          <label for="true">Ich stimme der Datenschutzreglung hiermit zu. </label><span class="error"><span class="error"><?= $errorTrue ?></span>
+          <label for="true">Ich stimme der Datenschutzreglung hiermit zu. </label><span class="error"><?= $errorTrue ?></span>
       </form>
     <?php endif ?>
      </div>
