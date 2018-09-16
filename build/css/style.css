@@ -138,6 +138,8 @@ footer {
   .active .description {
     grid-row: 3/4;
     grid-column: 1/8; }
+    .active .description ul {
+      margin-left: 3em; }
 
 .menu-trigger {
   font-size: 3em;
