@@ -183,7 +183,7 @@ h1 {
     display: flex; }
     .showPost .postContent .imgContainer {
       width: 50%; }
-      .showPost .postContent .imgContainer .big-img img {
+      .showPost .postContent .imgContainer .bigimg img {
         width: 100%;
         object-fit: cover; }
       .showPost .postContent .imgContainer .imgs {
@@ -193,7 +193,7 @@ h1 {
         .showPost .postContent .imgContainer .imgs img {
           width: 100%;
           object-fit: cover; }
-    .showPost .postContent .copys {
+    .showPost .postContent .textContainer {
       margin: 1em;
       width: 50%; }
 

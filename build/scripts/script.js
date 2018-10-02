@@ -9,9 +9,9 @@ var main = document.querySelector("main");
 
 // loop throughout ...
 for (var i = 0; i < categories.length; i++) {
-    var thatCategorie = categories[i];
+    //let thatCategorie = categories[i];
     //... to add an event
-    categories[i].addEventListener("click", function lookCat(thatCategorie) {
+    categories[i].addEventListener("click", function lookCat() {
         // get all sliding content ...
         var content = document.querySelectorAll(".slider");
         for (var j = 0; j < content.length; j++) {
@@ -43,14 +43,12 @@ function doSlider() {
 /* form validation *********************************************************/
 
 window.onload = function () {
-    console.log("Validierungs-Funktion geladen");
 
     var firstname = document.getElementsByName('firstname')[0];
     var lastname = document.getElementsByName('lastname')[0];
     var email = document.getElementsByName('email')[0];
     var message = document.getElementsByName('message')[0];
     var phone = document.getElementsByName('phone')[0];
-    var sayYes = document.getElementsByName('true')[0].getAttribut;
     var error = document.querySelectorAll('.error');
     var nameREGEX = /^(?=.{2,50}$)[a-zßäöüA-Z]+(?:['-.\s][a-zßäöüA-Z]+)*$/i;
     var emailREGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/i;
@@ -104,4 +102,9 @@ window.onload = function () {
         }
     }, false);
 };
+/* portfolio lightbox ***********************************************/
+
+var posts = document.querySelectorAll("article .post");
+console.log(posts);
+
 /* ***********************************************/

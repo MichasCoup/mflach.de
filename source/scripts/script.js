@@ -7,9 +7,9 @@ const main = document.querySelector("main");
 
 // loop throughout ...
 for( let i=0; i<categories.length; i++ ) {
-	let thatCategorie = categories[i];
+	//let thatCategorie = categories[i];
 	//... to add an event
-	categories[i].addEventListener("click", function lookCat(thatCategorie){
+	categories[i].addEventListener("click", function lookCat(){
 		// get all sliding content ...
 		let content = document.querySelectorAll(".slider");
 		for( let j=0; j<content.length; j++ ) {
@@ -43,14 +43,12 @@ function doSlider(){
 /* form validation *********************************************************/
 
 window.onload = function() {
-	console.log("Validierungs-Funktion geladen")
 
     let firstname = document.getElementsByName('firstname')[0];
     let lastname = document.getElementsByName('lastname')[0];
     let email = document.getElementsByName('email')[0];
     let message = document.getElementsByName('message')[0];
     let phone = document.getElementsByName('phone')[0];
-    let sayYes = document.getElementsByName('true')[0].getAttribut;
     let error = document.querySelectorAll('.error');
     let nameREGEX = /^(?=.{2,50}$)[a-zßäöüA-Z]+(?:['-.\s][a-zßäöüA-Z]+)*$/i;
     let emailREGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/i;
@@ -109,6 +107,12 @@ window.onload = function() {
     }, false);
 
 };
+/* portfolio lightbox ***********************************************/
+
+const posts = document.querySelectorAll("article .post");
+console.log(posts);
+
+
 /* ***********************************************/
 
 
