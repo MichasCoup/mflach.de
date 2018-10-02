@@ -25,7 +25,10 @@ a {
   color: inherit; }
 
 p {
-  padding: 1em; }
+  padding-bottom: .5rem; }
+
+h3 {
+  padding-top: .2rem; }
 
 body {
   font-family: OpenSans-Regular, "Helvetica", "sans-serif";
@@ -136,6 +139,7 @@ footer {
     transform-origin: 100% 50%;
     animation: revealRight 1.2s cubic-bezier(0.11, 0.73, 0.76, 0.89) forwards; }
   .active .description {
+    padding: 1em;
     grid-row: 3/4;
     grid-column: 1/8; }
     .active .description ul {

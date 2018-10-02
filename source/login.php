@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/portfolio.css" type="text/css" media="screen"/>
 </head>
-<body>
+<body class="max-view">
 <div id="top"></div>
 <header class="small-content">
     <div class="logo">
@@ -38,7 +38,7 @@
 <footer class="small-content">
     <ul>
         <li><a href="index.php">Startseite</a></li>
-        <li><a href="">Datenschutz</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
         <li><a href="impressum.html">Impressum</a></li>
     </ul>
 </footer>

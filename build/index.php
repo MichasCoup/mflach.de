@@ -123,80 +123,83 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
  </header>
  <main>
   <article>
-    <div id="start" class="slider disabled">
+    <div id="start" class="slider active">
      <div class="img-holder"><img src="https://images.pexels.com/photos/1356304/pexels-photo-1356304.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="#"></div>
      <div class="title">
       <h1>Michael Flach<br> Medienproduktion</h1>
      </div>
      <div class="description">
       <p>
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät
-       in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade
-       jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer
-       seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die
-       Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen
-       Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-       Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte
-       er den schmalen Durchgang.
+       Hallo, mein Name ist Michael Flach. Unabhängig von den Umständen, welche Sie zu meiner Website geführt hat,
+       können Sie hier meine Fähigkeiten zu Marketing, Entwicklung und Produktion entdecken.
       </p>
       <p>
-       Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er
-       dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der
-       Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem
-       kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er
-       sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit
-       und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst?
-       Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als
-       plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang.
+       Eine Marke zu präsentieren gehört zu meiner Leidenschaft. Neben dem Produkten oder Dienstleistungen einer
+       Marke muss ein definierter, kundennaher Auftritt zu finden sein. Mit einem klar abgestimmten Konzept zur
+       Kundenansprache abseits des eigenen Vertriebes, verbessert sich die Kundenzufriedenheit und der Umsatz.
       </p>
       <p>
-       Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich
-       auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in
-       der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt,
-       wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner
-       zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner
-       Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter
-       dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
+       Ich stehe auf die Erstellung von klare Konzeptionen mit eindeutigen Zielen und arbeite selbstverständlich
+       an der Zielerreichung ganzheitlich mit.
       </p>
+      <p>
+       Mein Arbeiten setzt sich somit wie folgt zusammen:
+       <ul>
+        <li>definierte Ziele und Erwartungen</li>
+        <li>abgestimmte Konzepte</li>
+        <li>Projektbetreuung</li>
+       </ul>
+      </p>
+      <p>
+       Gönnen Sie sich einen Moment und entdecken Sie weitere Informationen über meine Arbeit.
+      </p>
+      <p>Mit freundlichen Grüßen<br>Michael Flach</p>
      </div>
     </div>
     <div id="design" class="slider disabled">
      <div class="img-holder"><img src="https://images.pexels.com/photos/1372103/pexels-photo-1372103.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="#"></div>
      <div class="title">
-      <h1>Design<br> Medienproduktion</h1>
+      <h1>Grafik & Design</h1>
      </div>
      <div class="description">
-      <p>
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät
-       in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade
-       jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer
-       seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die
-       Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen
-       Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-       Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte
-       er den schmalen Durchgang.
-      </p>
-      <p>
-       Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er
-       dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der
-       Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem
-       kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er
-       sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit
-       und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst?
-       Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als
-       plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang.
-      </p>
-      <p>
-       Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich
-       auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in
-       der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt,
-       wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner
-       zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner
-       Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter
-       dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-      </p>
+         <h3>Corperate Design</h3>
+         <p>
+             Ein Schwerpunkt meiner Arbeit ist das richtige Anwenden und Entwickeln von Designrichtlinien
+             auf unterschiedliche Formate. Durch eine optimale Passung auf gegebenen Anforderungen,
+             wirkt ein Markenauftritt stimmig und behält seine Botschaft bei. Dank einem gut geplanten
+             Corperate Design können immer neue kreative Ideen entstehen und verwirklicht werden.
+         </p>
+         <h3>Markenadaption</h3>
+         <p>
+             Ob ein 18/1-Großplakat oder eine Visitenkarte, der ganzheitliche Markenauftritt kann nur unter
+             Berücksichtigung von Corporate-Design-Richtlinien gegeben sein. Designelemente und Layouts müssen
+             an unterschiedliche Formate und Funktionen angepasst werden. Das Einhalten einer klaren
+             Linie ermöglicht den Erfolg einer Marke und ihre Wiedererkennbarkeit.
+         </p>
+         <h3>Werbemittel</h3>
+         <p>
+             Ein riesiges Plakat oder doch einen Flyer? Vielleicht auch eine Kombination! Marken wollen ein
+             Maximum an potenziellen Kunden ansprechen. Um dies zu ermöglichen, braucht es ein Konzept
+             und den richtigen Umgang mit Werbemitteln. Ältere Kunden gewinnt man mit Zeitungsanzeigen und Beilagen.
+             Doch wie gewinnt man den Rest?
+         </p>
+         <h3>Satz- Reinzeichnung</h3>
+          <p>
+              Jedes Produkt vom Flyer bis zum Geschäftsbericht braucht einen logischen
+              Aufbau. Um diesen Aufbau zu garantieren, wird eine klare und durchdachte
+              Reinzeichnung benötigt. Dadurch eröffnet sich die Möglichkeit, ein Handwerk
+              zu beherrschen, dem jobübergreifend alle Teammitglieder vertrauen. Das
+              Arbeiten an alten oder fremden Dateien wird dadurch zusätzlich einfach und verständlich.
+          </p>
+         <h3>Bildbearbeitung</h3>
+         <p>
+             Jedes Bild besitzt eine Geschichte, nur sieht nicht jeder Betrachter diese. Eine
+             Bildbearbeitung muss den Charakter des Bildes verstärken, Kundenwünsche
+             berücksichtigen oder Farbklimata erzeugende Farben müssen in manchen
+             Bildern nachbearbeitet werden, um eine Brillanz zu schaffen, die fasziniert.
+             Unreinheiten oder Makel müssen retuschiert werden, damit sie nicht stören.
+             Eine Bildmontage erlaubt uns zu träumen.
+         </p>
      </div>
     </div>
     <div id="coding" class="slider disabled">
@@ -205,36 +208,12 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
       <h1>Coding &<br>Web-Development </h1>
      </div>
      <div class="description">
-      <p>
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät
-       in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade
-       jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer
-       seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die
-       Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen
-       Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-       Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte
-       er den schmalen Durchgang.
-      </p>
-      <p>
-       Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er
-       dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der
-       Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem
-       kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er
-       sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit
-       und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst?
-       Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als
-       plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang.
-      </p>
-      <p>
-       Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich
-       auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in
-       der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt,
-       wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner
-       zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner
-       Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter
-       dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-      </p>
+         <h3>Frontend Webentwicklung</h3>
+         <p>mit HTML, CSS und JavaScript</p>
+         <h3>Backend Entwicklung</h3>
+         <p>mit PHP oder node.js und Datenbankanwendungen</p>
+         <h3>Web Applications</h3>
+         <p>mit Angular.js und React.js</p>
      </div>
     </div>
     <div id="about" class="slider disabled">
@@ -275,14 +254,14 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
       </p>
      </div>
     </div>
-    <div id="contact" class="slider active">
+    <div id="contact" class="slider disabled">
      <div class="img-holder"><img src="https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="#"></div>
      <div class="title">
       <h1>Jetzt kontaktieren</h1>
      </div>
     <div class="description">
     <?= $dbMessage ?>
-    <?php if(!$dbMessage): ?>
+    <?php if(!$hideform): ?>
       <form action="" method="post" novalidate>
 
        <span><input type="radio" name="gender" value="male" id="male" <?php if($gender == "male") echo "checked" ?>><label class="genders" for="male">Herr</label></span>
@@ -312,8 +291,9 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
 
           <label for="message" class="inp">
               <textarea name="message" id="message" placeholder="Ihre Nachricht" rows="4" required><?= $message ?></textarea>
-              <span class="error"><?= $errorMessage ?></span>
-          </label><br>
+          </label>
+          <span class="error"><?= $errorMessage ?></span>
+          <br>
 
           <input type="submit" name="formsent" value="Nachricht abschicken">
           <input type="checkbox" id="true" name="true" value="true" <?php if($true == "true") echo "checked" ?> >
