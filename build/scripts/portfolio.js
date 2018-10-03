@@ -47,12 +47,12 @@ console.log(posts);
 
 var _loop = function _loop(_i) {
 	posts[_i].addEventListener("click", function () {
-		var img = posts[_i].querySelector("figure").firstElementChild;
+		var img = posts[_i].querySelector("figure").firstElementChild.attributes;
 		var title = posts[_i].innerText;
 		var section = posts[_i].querySelector("h4").innerText;
 		var description = posts[_i].querySelector("p").innerText;
 
-		console.log(img, title, section, description);
+		console.log(img[0], title, section, description);
 
 		var showPost = document.createElement("div");
 		var postContent = document.createElement("div");
@@ -60,21 +60,26 @@ var _loop = function _loop(_i) {
 		var bigimg = document.createElement("div");
 		var imgs = document.createElement("div");
 		var textContainer = document.createElement("div");
+
 		showPost.className = "showPost";
 		postContent.className = "postContent";
 		imgContainer.className = "imgContainer";
 		bigimg.className = "bigimg";
 		imgs.className = "imgs";
 		textContainer.className = "textContainer";
+
 		document.body.appendChild(showPost);
 		showPost.appendChild(postContent);
 		postContent.appendChild(imgContainer);
 		postContent.appendChild(textContainer);
 		imgContainer.appendChild(bigimg);
 		imgContainer.appendChild(imgs);
+		bigimg.innerHTML = "<img src='" + img[0].value + "' alt='" + img[1].value + "'>";
 		textContainer.innerHTML = "<h2>" + title + "</h2><h4>" + section + "</h4><p>" + description + "</p>";
+		postContent.innerHTML += "<div class=\"closeIcon\">&times;</div>";
 
-		showPost.addEventListener("click", function closePost() {
+		var closeIcon = document.querySelector(".closeIcon");
+		closeIcon.addEventListener("click", function closePost() {
 			if (showPost.parentNode) {
 				showPost.parentNode.removeChild(showPost);
 			}

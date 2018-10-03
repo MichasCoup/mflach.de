@@ -16,7 +16,6 @@
     <div class="logo">
         <span><a href="index.php">mflach.de</a></span>
     </div>
-    <h1>Login</h1>
 </header>
 <main class="small-content">
     <article>
@@ -37,7 +36,7 @@
 </main>
 <footer class="small-content">
     <ul>
-        <li><a href="index.php">Startseite</a></li>
+        <li><a href="index.php">Start</a></li>
         <li><a href="datenschutz.html">Datenschutz</a></li>
         <li><a href="impressum.html">Impressum</a></li>
     </ul>
