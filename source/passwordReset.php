@@ -3,12 +3,7 @@
 	/*********** CONFIGURATION ***********/
 	/*************************************/
 
-	// include(Pfad zur Datei): Bei Fehler wird das Skript weiter ausgeführt. Problem mit doppelter Einbindung derselben Datei
-	// require(Pfad zur Datei): Bei Fehler wird das Skript gestoppt. Problem mit doppelter Einbindung derselben Datei
-	// include_once(Pfad zur Datei): Bei Fehler wird das Skript weiter ausgeführt. Kein Problem mit doppelter Einbindung derselben Datei
-	// require_once(Pfad zur Datei): Bei Fehler wird das Skript gestoppt. Kein Problem mit doppelter Einbindung derselben Datei
-
-	require_once("include/config.inc.php");			
+	require_once("include/config.inc.php");
 	require_once("include/form.inc.php");
 	require_once("include/db.inc.php");
 
@@ -35,7 +30,7 @@ if(DEBUG)			echo "<p class='debug'>[START] Seitenzugriff erlaubt.</p>";
 					$usr_id = cleanString("$_GET[id]");
 					$acc_pwdhash = cleanString("$_GET[hash]");
 if(DEBUG)			echo "<p class='debug'>\$usr_id : $usr_id</p>";
-if(DEBUG)			echo "<p class='debug'>\$acc_pwdhash : $acc_pwdhash</p>";
+if(DEBUG)			echo "<p class='debug'>\$usr_pwdhash : $usr_pwdhash</p>";
 
 				// Schritt 3 URL: AUSNAHME: Werte validieren DB-Operation
 					
@@ -46,8 +41,8 @@ if(DEBUG)			echo "<p class='debug'>\$acc_pwdhash : $acc_pwdhash</p>";
 
 				// Schritt 2 SQL-Statement vorbereiten
 					$statement = $pdo->prepare("
-						SELECT acc_pwdhash, acc_pwdtimestamp
-						FROM accounts
+						SELECT usr_pwdhash, usr_pwdtimestamp
+						FROM users
 						WHERE usr_id = :ph_usr_id
 					");
 
@@ -70,7 +65,7 @@ if(DEBUG)				echo "<p class='debug'>[Sicherheit 1] USR_ID wurde in der Datenbank
 
 		/* Sicherheit 2: Prüfen, ob zu der User_ID ein Hashwert existiert. *********************************************/
 
-						if( !$row["acc_pwdhash"] ){
+						if( !$row["usr_pwdhash"] ){
 							// Fehlerfall
 if(DEBUG)					echo "<p class='debug'>[FEHLER] Kein Hash in der DB gefunden!</p>";
 							DIE("<h3 class='error'>Der übergebene Link ist ungültig!<br> 
@@ -81,7 +76,7 @@ if(DEBUG)					echo "<p class='debug'>[Sicherheit 2] Hash in der DB gefunden!</p>
 
 		/* Sicherheit 3: Prüfen, ob Hashwert übereinstimmen. ***********************************************************/
 
-							if( $row["acc_pwdhash"] != $acc_pwdhash ) {
+							if( $row["usr_pwdhash"] != $usr_pwdhash ) {
 								// Fehlerfall
 if(DEBUG)						echo "<p class='debug'>[FEHLER] URL-Hash stimmt nicht mit dem Hash aus der DB überein!</p>";
 								DIE("<h3 class='error'>Der übergebene Link ist ungültig!<br> 
@@ -92,7 +87,7 @@ if(DEBUG)						echo "<p class='debug'>[Sicherheit 3] URL-Hash und DB-Hash stimme
 
 		/* Sicherheit 4: Prüfen, ob der Timestamp bereits abgelaufen ist ***********************************************/
 							// Timestamp aus DB auslesen und in UNIX-Format umwandeln
-								$timestampDB = strtotime($row["acc_pwdtimestamp"]);
+								$timestampDB = strtotime($row["usr_pwdtimestamp"]);
 //if(DEBUG)						echo "<p class='debug'>\$timestampDB : $timestampDB</p>";
 
 								if( $timestampDB < time()-60*60*24 ) {
@@ -151,11 +146,11 @@ if(DEBUG)					echo "<p class='debug'>\$passwordHash : $passwordHash</p>";
 
 						// Schritt 2 DB: SQL-Statement vorbereiten
 							$statement = $pdo->prepare("
-								UPDATE accounts
+								UPDATE users
 								SET 
-								acc_password = :ph_acc_password,
-								acc_pwdtimestamp = :ph_acc_pwdtimestamp,
-								acc_pwdhash = :ph_acc_pwdhash
+								usr_password = :ph_usr_password,
+								usr_pwdtimestamp = :ph_usr_pwdtimestamp,
+								usr_pwdhash = :ph_usr_pwdhash
 								WHERE usr_id = :ph_usr_id
 							");
 
@@ -198,7 +193,7 @@ if(DEBUG)						echo "<p class='debug'>[3] Datensatz wurde aktualisiert</p>";
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Benutzerverwaltung - Passwort neu setzen</title>
+		<title>Passwort erneuern</title>
 		<link rel="stylesheet" href="../css/main.css">
 	</head>
 	<body>

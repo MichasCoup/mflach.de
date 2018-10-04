@@ -84,7 +84,8 @@ aside {
 
 article {
   background-color: rgba(255, 255, 255, 0.7);
-  padding: 0 1em; }
+  padding: 0 1em;
+  margin: 0 auto; }
 
 .portfolio {
   padding: 1em;
@@ -156,6 +157,9 @@ h1 {
   font-size: 2em;
   margin: 0 auto;
   padding: .5rem; }
+
+h2, h3 {
+  padding: .5em; }
 
 .disabled {
   opacity: 0;
@@ -232,7 +236,6 @@ h1 {
       color: #fff;
       transition: all .25s; }
   main {
-    height: 100vh;
     flex-direction: row; }
   .desktop {
     display: block; } }
@@ -261,7 +264,8 @@ h1 {
   max-width: 360px;
   position: relative;
   margin: 0 auto;
-  height: auto; }
+  height: auto;
+  display: block; }
 
 .login {
   height: auto; }
@@ -520,6 +524,9 @@ input[type="radio"]:checked ~ .genders {
   font-family: courier new;
   font-size: 0.9em;
   color: #333; }
+
+.success {
+  color: darkgreen; }
 
 form {
   padding: 0; }

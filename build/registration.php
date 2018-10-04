@@ -73,7 +73,7 @@ if(DEBUG)			echo "<p class='debug'>\$passwordHash = $passwordHash</p>";
 						!$errorPassword &&
 						!$errorPasswordCheck) {
 							// Erfolgsfall Formularprüfung
-if(DEBUG)			echo "<p class='debug'>Das Formular wird nunr verarbeitet ... </p>";
+if(DEBUG)			echo "<p class='debug'>Das Formular wird verarbeitet ... </p>";
 
 /* Daten Weiterverarbeitung *********************************************/
 // Datenbankoperation
@@ -121,11 +121,15 @@ if(DEBUG)						echo "<p class='debug'>\$newUserId =  $newUserId</p>";
                                 // Fehlerfall User anlegen
 if(DEBUG)							echo "<p class='debug'>FEHLER beim Anlegen des neuen Users.</p>";
 									$dbMessage = "<h3 class='error'>Es ist ein Fehler aufgetreten! Bitte versuchen sie es später erneut.</p>";
-								}
+								} else {
+if(DEBUG)							echo "<p class='debug'>Neuer User (<b>$email</b>) wurde angelegt.</p>";
+                                    $dbMessage = "<h3 class='success'>Sie haben sich erfolgreich angemeldet.</h3><br><br><h3><a href='login.php'>… zum Login</a></h3>";
+                                    $showform = false;
+                                }
 
                             } else {
                                 // Fehlerfall Email ist vorhanden
-                                $errorEmail = "Diese E-Mail-Adresse ist bereits registriert!";
+                                $errorEmail = "Diese E-Mail ist bereits registriert!";
                             }
 						} else {
 							// Fehlerfall Formularprüfung
@@ -152,7 +156,7 @@ if(DEBUG)			echo "<p class='debug'>... Formularverarbeitung ist abgeschlossen! <
                 <span><a href="index.php">Zur Startseite</a></span>
             </div>
         </header>
-            <main>
+            <main class="small-content">
                 <article>
                     <?= $dbMessage ?>
             <?php if( $showform ): ?>
@@ -181,19 +185,13 @@ if(DEBUG)			echo "<p class='debug'>... Formularverarbeitung ist abgeschlossen! <
                         <!--Passwort-->
                         <label for="password" class="inp">
                             <input type="password" name="password" id="password" placeholder="&nbsp;" >
-                            <span class="label">Passwort wählen:</span><span class="error"><?= $errorEmail ?></span><br>
+                            <span class="label">Passwort wählen:</span><span class="error"><?= $errorPassword ?></span><br>
                         </label>
                         <!--Passwort-->
                         <label for="password" class="inp">
                             <input type="password" name="passwordCheck" id="password" placeholder="&nbsp;" >
-                            <span class="label">Passwort wiederholen:</span><span class="error"><?= $errorEmail ?></span><br>
+                            <span class="label">Passwort wiederholen:</span><span class="error"><?= $errorPasswordCheck ?></span><br>
                         </label>
-<!--
-                                <span class="error"><?= $errorPassword ?></span><br>
-                            <input type="password" name="password" placeholder="Passwort wählen"><span class="marker">*</span><br>
-                                <span class="error"><?= $errorPasswordCheck ?></span><br>
-                            <input type="password" name="passwordCheck" placeholder="Passwort wiederholen"><span class="marker">*</span><br>
--->
                         <input type="submit" value="Registrierung abschliessen">
                     </form>
             <?php endif ?>

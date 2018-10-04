@@ -8,10 +8,10 @@
 /************** DB CONFIGURATION*****************/
 
 define("DB_SYSTEM", "mysql");
-define("DB_HOST", "localhost");
+define("DB_HOST", "server1.febas.net");
 define("DB_NAME", "mflach");
-define("DB_USER", "root");
-define("DB_PWD", "");
+define("DB_USER", "k8695-1");
+define("DB_PWD", "Ka6C0bE3gL");
 
 
 /************* FROM CONFIGURATION****************/
@@ -26,9 +26,6 @@ define("IMAGE_MAX_SIZE", 128*1024);
 define("IMAGE_UPLOAD_PATH", "uploaded_images/");
 define("IMAGE_ALLOWED_MIMETYPES", array("image/jpg", "image/jpeg", "image/gif", "image/png"));
 
-
-/*********** STANDARD PATH CONFIGURATION ***********/
-define("AVATAR_DUMMY_PATH", "css/images/avatar_dummy.png");
 
 
 /***************** DEBUGGING ********************/

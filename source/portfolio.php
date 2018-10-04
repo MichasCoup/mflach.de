@@ -1,3 +1,56 @@
+<?php
+
+session_name("blog");
+session_start();
+
+if ( !isset( $_SESSION["usr_id"] ) ) {
+    header("Location: login.php");
+}
+
+
+/*********************************************************************************************************************************************/
+/* Configuartion *****************************************************************************************************************************/
+/*********************************************************************************************************************************************/
+require_once("include/config.inc.php");
+require_once("include/form.inc.php");
+require_once("include/db.inc.php");
+require_once("include/dateTime.inc.php");
+
+$pdo = dbConnect();
+
+
+/*********************************************************************************************************************************************/
+/* URL-Parameterverarbeitung *****************************************************************************************************************/
+/*********************************************************************************************************************************************/
+
+// Schritt 1 URL: Prüfen, ob ein URL-Parameter übergeben wurde
+if( isset($_GET["action"]) ) {
+    if (DEBUG) echo "<p class='debug'>URL-Parameter 'action' wurde übergeben.</p>";
+
+// Schritt 2 URL: Werte auslesen, entschärfen, DEBUG-Ausgabe
+    $action = cleanString($_GET["action"]);
+    if (DEBUG) echo "<p class='debug'>\$action: $action";
+
+// Schritt 3 URL: i.d.R. Verzweigen
+
+
+    /* Verzweigung Logout */
+    /*********************************************************************************************************************************************/
+
+    if ($action == "logout") {
+        // Session löschen
+        session_destroy();
+        // Umleiten auf Index.php
+        header("Location: login.php");
+        exit;
+        // ENDE Verzweigung Logout
+    }
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="de">
 <head>
