@@ -8,10 +8,10 @@
 /************** DB CONFIGURATION*****************/
 
 define("DB_SYSTEM", "mysql");
-define("DB_HOST", "server1.febas.net");
+define("DB_HOST", "localhost");
 define("DB_NAME", "mflach");
-define("DB_USER", "k8695-1");
-define("DB_PWD", "Ka6C0bE3gL");
+define("DB_USER", "root");
+define("DB_PWD", "");
 
 
 /************* FROM CONFIGURATION****************/
