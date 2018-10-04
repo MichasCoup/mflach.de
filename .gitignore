@@ -1,6 +1,0 @@
-
-.DS_Store
-*.codekit3
-.idea/workspace.xml
-*.xml
-source/include/config.inc.php
