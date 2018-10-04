@@ -8,10 +8,10 @@
 /************** DB CONFIGURATION*****************/
 
 define("DB_SYSTEM", "mysql");
-define("DB_HOST", "localhost");
-define("DB_NAME", "blog");
-define("DB_USER", "root");
-define("DB_PWD", "");
+define("DB_HOST", "server1.febas.net");
+define("DB_NAME", "mflach");
+define("DB_USER", "k8695-1");
+define("DB_PWD", "Ka6C0bE3gL");
 
 
 /************* FROM CONFIGURATION****************/
@@ -32,9 +32,9 @@ define("AVATAR_DUMMY_PATH", "css/images/avatar_dummy.png");
 
 
 /***************** DEBUGGING ********************/
-define("DEBUG", false);
-define("DEBUG_F", false);
-define("DEBUG_DB", false);
+define("DEBUG", true);
+define("DEBUG_F", true);
+define("DEBUG_DB", true);
 
 
 

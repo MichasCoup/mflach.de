@@ -14,11 +14,11 @@
 <div id="top"></div>
 <header class="small-content">
     <div class="logo">
-        <span><a href="index.php">mflach.de</a></span>
+        <span><a href="index.php">Zur Startseite</a></span>
     </div>
 </header>
 <main class="small-content">
-    <article>
+    <article class="login">
         <form action="" method="post">
             <label for="email" class="inp">
                 <input type="text" name="email" id="email" placeholder="&nbsp;">
@@ -32,12 +32,13 @@
 
             <input type="submit" name="formsentLogin" value="Login">
         </form>
+
     </article>
 </main>
 <footer class="small-content">
     <ul>
-        <li><a href="index.php">Start</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="registration.php">Anmelden</a></li>
+        <li><a href="passwordForgotten.php">Passwort vergessen</a></li>
         <li><a href="impressum.html">Impressum</a></li>
     </ul>
 </footer>
