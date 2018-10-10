@@ -1,5 +1,9 @@
 <?php
 
+session_name("blog");
+session_start();
+
+
 /*********************************************************************************************************************************************/
 /* Configuartion *****************************************************************************************************************************/
 /*********************************************************************************************************************************************/
@@ -93,6 +97,33 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
             }
 
 }
+/*********************************************************************************************************************************************/
+/* URL-Parameterverarbeitung *****************************************************************************************************************/
+/*********************************************************************************************************************************************/
+
+// Schritt 1 URL: Prüfen, ob ein URL-Parameter übergeben wurde
+if( isset($_GET["action"]) ) {
+    if (DEBUG) echo "<p class='debug'>URL-Parameter 'action' wurde übergeben.</p>";
+
+// Schritt 2 URL: Werte auslesen, entschärfen, DEBUG-Ausgabe
+    $action = cleanString($_GET["action"]);
+    if (DEBUG) echo "<p class='debug'>\$action: $action";
+
+// Schritt 3 URL: i.d.R. Verzweigen
+
+
+    /* Verzweigung Logout */
+    /*********************************************************************************************************************************************/
+
+    if ($action == "logout") {
+        // Session löschen
+        session_destroy();
+        // Umleiten auf Index.php
+        header("Location: index.php");
+        exit;
+        // ENDE Verzweigung Logout
+    }
+}
 
 
 ?>
@@ -118,6 +149,10 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
     <li class="coding">Coding</a></li>
     <li class="about">About</a></li>
     <li class="contact">Kontakt</a></li>
+    <li><a href="portfolio.php">Portfolio</a></li>
+       <?php if( isset($_SESSION["usr_id"]) ): ?>
+           <li><a href="?action=logout">Logout</a></li>
+       <?php endif ?>
    </ul>
   </nav>
  </header>
@@ -130,28 +165,24 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
      </div>
      <div class="description">
       <p>
-       Hallo, mein Name ist Michael Flach. Unabhängig von den Umständen, welche Sie zu meiner Website geführt hat,
-       können Sie hier meine Fähigkeiten zu Marketing, Entwicklung und Produktion entdecken.
+          Guten Tag, mein Name ist Michael Flach. Unabhängig von den Umständen, welche Sie zu meiner Website geführt haben, können Sie hier meine Fähigkeiten zu Marketing, Entwicklung und Produktion entdecken.
       </p>
       <p>
-       Eine Marke zu präsentieren gehört zu meiner Leidenschaft. Neben dem Produkten oder Dienstleistungen einer
-       Marke muss ein definierter, kundennaher Auftritt zu finden sein. Mit einem klar abgestimmten Konzept zur
-       Kundenansprache abseits des eigenen Vertriebes, verbessert sich die Kundenzufriedenheit und der Umsatz.
+          Eine Marke zu repräsentieren, gehört zu meiner Leidenschaft. Neben den Produkten und Dienstleistungen einer Marke ist ein definierter, kundennaher Auftritt erforderlich. Mit einem klar abgestimmten Konzept zur Kundenansprache abseits des eigenen Vertriebes verbessert sich die Kundenzufriedenheit und der Umsatz.
       </p>
       <p>
-       Ich stehe auf die Erstellung von klare Konzeptionen mit eindeutigen Zielen und arbeite selbstverständlich
-       an der Zielerreichung ganzheitlich mit.
+          Die Erstellung von klaren Konzeptionen mit eindeutigen Zielen ist für mich wichtiger Gegenstand des Produktmarketings. Selbstverständlich arbeite ich an der Zielerreichung ganzheitlich mit.
       </p>
       <p>
-       Mein Arbeiten setzt sich somit wie folgt zusammen:
-       <ul>
-        <li>definierte Ziele und Erwartungen</li>
-        <li>abgestimmte Konzepte</li>
-        <li>Projektbetreuung</li>
-       </ul>
+       Mein Leistungen setzen sich somit wie folgt zusammen:
+         <ul>
+             <li>Definierte Ziele und Erwartungen</li>
+             <li>Abgestimmte Konzepte</li>
+             <li>Umfassende Projektbetreuung</li>
+         </ul>
       </p>
       <p>
-       Gönnen Sie sich einen Moment und entdecken Sie weitere Informationen über meine Arbeit.
+          Nehmen Sie sich gerne einen Moment Zeit und informieren Sie sich über meine Arbeit.
       </p>
       <p>Mit freundlichen Grüßen<br>Michael Flach</p>
      </div>
@@ -162,43 +193,25 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
       <h1>Grafik & Design</h1>
      </div>
      <div class="description">
-         <h3>Corperate Design</h3>
+         <h3>Corporate Design</h3>
          <p>
-             Ein Schwerpunkt meiner Arbeit ist das richtige Anwenden und Entwickeln von Designrichtlinien
-             auf unterschiedliche Formate. Durch eine optimale Passung auf gegebenen Anforderungen,
-             wirkt ein Markenauftritt stimmig und behält seine Botschaft bei. Dank einem gut geplanten
-             Corperate Design können immer neue kreative Ideen entstehen und verwirklicht werden.
+             Ein Schwerpunkt meiner Arbeit ist die Entwicklung von Designrichtlinien und ihre Anwendung auf unterschiedliche Formate. Durch eine optimale Passung auf die gegebenen Anforderungen wirkt ein Markenauftritt stimmig und behält seine Botschaft bei. Dank eines gut geplanten Corporate Designs können immer neue kreative Ideen entstehen und verwirklicht werden.
          </p>
          <h3>Markenadaption</h3>
          <p>
-             Ob ein 18/1-Großplakat oder eine Visitenkarte, der ganzheitliche Markenauftritt kann nur unter
-             Berücksichtigung von Corporate-Design-Richtlinien gegeben sein. Designelemente und Layouts müssen
-             an unterschiedliche Formate und Funktionen angepasst werden. Das Einhalten einer klaren
-             Linie ermöglicht den Erfolg einer Marke und ihre Wiedererkennbarkeit.
+             Ob ein 18/1-Großplakat oder eine Visitenkarte, der ganzheitliche Markenauftritt kann nur unter Berücksichtigung von Corporate-Design-Richtlinien gelingen. Designelemente und Layouts müssen an unterschiedliche Formate und Funktionen angepasst werden. Das Einhalten einer klaren Linie ermöglicht den Erfolg einer Marke und ihre Wiedererkennbarkeit.
          </p>
          <h3>Werbemittel</h3>
          <p>
-             Ein riesiges Plakat oder doch einen Flyer? Vielleicht auch eine Kombination! Marken wollen ein
-             Maximum an potenziellen Kunden ansprechen. Um dies zu ermöglichen, braucht es ein Konzept
-             und den richtigen Umgang mit Werbemitteln. Ältere Kunden gewinnt man mit Zeitungsanzeigen und Beilagen.
-             Doch wie gewinnt man den Rest?
+             in riesiges Plakat oder doch einen Flyer? Vielleicht auch eine Kombination! Marken wollen ein Maximum an potenziellen Kunden ansprechen. Um dies zu ermöglichen, braucht es ein Konzept und den richtigen Umgang mit Werbemitteln.
          </p>
          <h3>Satz- Reinzeichnung</h3>
           <p>
-              Jedes Produkt vom Flyer bis zum Geschäftsbericht braucht einen logischen
-              Aufbau. Um diesen Aufbau zu garantieren, wird eine klare und durchdachte
-              Reinzeichnung benötigt. Dadurch eröffnet sich die Möglichkeit, ein Handwerk
-              zu beherrschen, dem jobübergreifend alle Teammitglieder vertrauen. Das
-              Arbeiten an alten oder fremden Dateien wird dadurch zusätzlich einfach und verständlich.
+              Jedes Produkt, vom Flyer bis zum Geschäftsbericht, braucht einen logischen Aufbau. Um diesen Aufbau zu garantieren, wird eine klare und durchdachte Reinzeichnung benötigt. Der Entwurf einer solchen Reinzeichnung führt das Beherrschen eines Handwerks mit sich, dem jobübergreifend alle Teammitglieder vertrauen können. Das Arbeiten an alten oder fremden Dateien wird dadurch zusätzlich einfach und verständlich.
           </p>
          <h3>Bildbearbeitung</h3>
          <p>
-             Jedes Bild besitzt eine Geschichte, nur sieht nicht jeder Betrachter diese. Eine
-             Bildbearbeitung muss den Charakter des Bildes verstärken, Kundenwünsche
-             berücksichtigen oder Farbklimata erzeugende Farben müssen in manchen
-             Bildern nachbearbeitet werden, um eine Brillanz zu schaffen, die fasziniert.
-             Unreinheiten oder Makel müssen retuschiert werden, damit sie nicht stören.
-             Eine Bildmontage erlaubt uns zu träumen.
+             Jedes Bild besitzt eine Geschichte, nur erkennt nicht jeder Betrachter diese. Eine Bildbearbeitung muss sowohl den Charakter des Bildes verstärken als auch Kundenwünsche berücksichtigen. Farbklimata erzeugende Farben müssen in einigen Bildern nachbearbeitet werden, um eine Brillanz zu schaffen, die fasziniert. Unreinheiten oder Makel müssen retuschiert werden, damit sie nicht stören. Eine Bildmontage erlaubt uns, zu träumen.
          </p>
      </div>
     </div>
@@ -211,7 +224,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
          <h3>Frontend Webentwicklung</h3>
          <p>mit HTML, CSS und JavaScript</p>
          <h3>Backend Entwicklung</h3>
-         <p>mit PHP oder node.js und Datenbankanwendungen</p>
+         <p>mit PHP oder node.js und Datenbanken</p>
          <h3>Web Applications</h3>
          <p>mit Angular.js und React.js</p>
      </div>
@@ -222,36 +235,24 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
       <h1>About: mflach.de</h1>
      </div>
      <div class="description">
-      <p>
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät
-       in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade
-       jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer
-       seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die
-       Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen
-       Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-       Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte
-       er den schmalen Durchgang.
-      </p>
-      <p>
-       Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er
-       dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der
-       Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem
-       kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er
-       sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit
-       und suchten einen Ausweg. War jetzt wirklich alles vorbei, waren alle Mühe und alle Vorbereitungen umsonst?
-       Er presste sich ganz eng an die Wand hinter ihm und hoffte, der Verfolger würde ihn übersehen, als
-       plötzlich neben ihm mit kaum wahrnehmbarem Quietschen eine Tür im nächtlichen Wind hin und her schwang.
-      </p>
-      <p>
-       Könnte dieses der flehentlich herbeigesehnte Ausweg aus seinem Dilemma sein? Langsam bewegte er sich
-       auf die offene Tür zu, immer dicht an die Mauer gepresst. Würde diese Tür seine Rettung werden?
-       Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in
-       der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt,
-       wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner
-       zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner
-       Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter
-       dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen?
-      </p>
+         <h2><b>Kurz</b></h2>
+         <br>
+         <h4><b>Name:</b> Michael Flach</h4>
+         <h4><b>Geboren am:</b> 17.04.1990</h4>
+         <h4><b>Wohnhaft in:</b> Berlin</h4>
+         <br>
+         <h2><b>Lang</b></h2>
+         <br>
+         <h4>Am Anfang …</h4>
+         <p>… bestand der Wunsch nach einem Beruf, in dem ich kreative Lösungen finden kann. Ich habe mich für eine Ausbildung zum Mediengestalter für Gestaltung und Technik entschieden und diese erfolgreich in der Markenagentur MetaDesign abgeschlossen. Dank der Einführung in die Welt der Marken habe ich die Grundlagen von Corporate Design und der Corporate Identity gelernt und perfektioniert. In der Ausbildung wurde mir von erfahrenen Mitarbeitern nicht nur die saubere technische Umsetzung inklusive historischer Bedeutung von CD und CI beigebracht, sondern auch die Prinzipien der Gestaltung und deren Grundlage. Ich durfte Projekte vom Datenblatt inklusive Erstentwurf über die Produktion bis hin zur vollständigen Umsetzung selbstständig bearbeiten, begleiten und mein organisatorisches Talent beweisen.</p>
+         <h4>Neben der Einführung …</h4>
+         <p>… in die Produktion und Kundenbetreuung wollte ich es genauer wissen. Mein Weg führte mich in die Welt der Druckereien, wo ich mein Wissen vertiefen konnte. Auf der Seite der Druckdienstleister konnte ich neue Erfahrungen zur Kundenführung gewinnen und mein Wissen über die Techniken der Branche weiter vertiefen. Das Erstellen von Angebotsanfragen fällt mir seither leicht und mein sicherer Umgang mit externen Dienstleistern ist bestimmend und zielführend.</p>
+         <h4>Als Möglichkeit, …</h4>
+         <p>… mein Wissen und meine Fähigkeiten einzusetzen, suche ich Firmen, die auf gutes Marketing setzen und intelligente Lösungen schätzen. Mich interessiert die Kommunikation einer Firma nach innen und außen. Die Erstellung von internen Gestaltungen, Firmenpräsentationen oder Mitarbeitergeschenken fällt mir gleichermaßen leicht wie Anzeigen, Messestände oder Werbemittel. Abrundend dazu suche ich nach Lösungen, die Prozesse optimieren und neues Potential freisetzen. </p>
+         <h4>Viel Spaß …</h4>
+         <p>… habe ich vor allem bei der Erstellung von Lösungen im Bereich User Experience und User Interface. Obgleich Formularmasken oder Lehrmittelherstellung, ich bediene mich sowohl klarer Gestaltungen zur optimalen Zielführung als auch des gewissen Maßes an Detail für eine hohe Wiedererkennung des Corporate Designs.</p>
+         <h4>Noch Ergänzend …</h4>
+         <p>… ist hinzuzufügen, dass ich mich schon viele Jahre für Webentwicklung interessiere und private Projekte verfolge. Um dies zu untermalen, habe ich mir meine Fähigkeiten zertifizieren lassen und bin nicht abgeneigt diese auch im Beruf anzuwenden.</p>
      </div>
     </div>
     <div id="contact" class="slider disabled">
@@ -281,7 +282,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
 
           <label for="email" class="inp">
               <input type="text" name="email" id="email" value="<?= $email ?>" placeholder="&nbsp;" >
-              <span class="label">E-Mail:</span><span class="error"><?= $errorEmail ?></span><br>
+              <span class="label">E&#x2011;Mail:</span><span class="error"><?= $errorEmail ?></span><br>
           </label>
 
           <label for="phone" class="inp">
@@ -297,7 +298,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
 
           <input type="submit" name="formsent" value="Nachricht abschicken">
           <input type="checkbox" id="true" name="true" value="true" <?php if($true == "true") echo "checked" ?> >
-          <label for="true">Ich stimme der Datenschutzreglung hiermit zu. </label><span class="error"><?= $errorTrue ?></span>
+          <label for="true">Ich stimme der <a href="datenschutz.html">Datenschutzreglung</a> hiermit zu. </label><span class="error"><?= $errorTrue ?></span>
       </form>
     <?php endif ?>
      </div>
@@ -307,7 +308,7 @@ if(DEBUG)       echo "<p class='debug'> Kontaktformular wurde korrekt abgeschick
  <footer>
   <ul>
    <li><a href="impressum.html">Impressum</a></li>
-   <li><a href="login.php">Portfolio</a></li>
+   <li><a href="datenschutz.html">Datenschutz</a></li>
   </ul>
  </footer>
 <script src="scripts/script.js"></script>
