@@ -81,6 +81,8 @@ main {
   width: 100%;
   margin: 0 auto;
   transition: all .5s; }
+  main a {
+    color: #FF530D; }
 
 footer {
   max-width: 1000px;
