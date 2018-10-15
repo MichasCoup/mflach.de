@@ -22,9 +22,9 @@ $pdo = dbConnect();
 /* Variablen Initialisieren ******************************************************************************************************************/
 /*********************************************************************************************************************************************/
 
-$newCat				= NULL;
-
 $dbMessage          = NULL;
+
+$editPost           = false;
 
 /*********************************************************************************************************************************************/
 /* URL-Parameterverarbeitung *****************************************************************************************************************/
@@ -40,7 +40,6 @@ if( isset($_GET["action"]) ) {
 
 // Schritt 3 URL: i.d.R. Verzweigen
 
-
     /* Verzweigung Logout */
     /*********************************************************************************************************************************************/
 
@@ -51,6 +50,9 @@ if( isset($_GET["action"]) ) {
         header("Location: login.php");
         exit;
         // ENDE Verzweigung Logout
+    } elseif ( $action == "edit") {
+        $editPost = true;
+        $post = cleanString($_GET["id"]);
     }
 }
 
@@ -75,6 +77,29 @@ if( isset($_GET["action"]) ) {
             if( $catList ){
 if(DEBUG)	    echo "<p class='debug'>Kategorien wurden ausgelesen.</p>";
 }
+
+// Kategorien auslesen
+            if($editPost){
+
+                $statement = $pdo->prepare("
+                    SELECT blog_headline, 
+                           blog_image, 
+                           blog_size, 
+                           blog_content, 
+                           blog_company, 
+                           cat_name,
+                           cat_id
+                    FROM blogs 
+                    INNER JOIN categories USING(cat_id) 
+                    WHERE blog_id = :ph_blog_id
+                ");
+
+                $statement->execute(array(
+                    "ph_blog_id" => $post
+                )) OR DIE($statement-errorInfo()[2]);
+
+                $editPost = $statement->fetch();
+            }
 
 /*********************************************************************************************************************************************/
 /* Formularverarbeitung: Neuen Beitrag anlegen ***********************************************************************************************/
@@ -112,38 +137,62 @@ if(DEBUG)	echo "<p class='debug'>[POST-Blog] Formular ist fehlerfrei.</p>";
 
 /* Bild Upload *******************************************************************************************************************************/
 
-        if( !$_FILES["image"]["tmp_name"] ){
-if(DEBUG)	echo "<p class='debug'>[POST-Blog] Es wurde kein Bild für den Upload gefunden.</p>";
-            $errorImageUpload = "Es wurde kein Bild für den Upload gefunden.";
-        } else {
-            // Erfolgsfall Bilddatei gefunden
-if(DEBUG)	echo "<p class='debug'>[POST-Blog] Bild für Upload-gefunden.</p>";
+        //Beitrag wird editiert.
+        if ($editPost) {
+            if ( !$_FILES["image"]["tmp_name"]){
+if(DEBUG)	echo "<p class='debug'>[POST-Blog] Bild wird nicht geändert.</p>";
 
-            if ( $errorSize ) {
-                // Fehlerfall // Keine Ausrichtung ausgewählt
-if(DEBUG)		echo "<p class='debug'>[FEHLER] Bildgrößenfehler. Bild wurde nicht hochgeladen.</p>";
-                $errorSize = "Wenn Sie ein Bild hochladen möchte, wählen Sie bitte eine Bildausrichtung aus.";
+            }else {
+                // Erfolgsfall Bilddatei gefunden
 
-            } else {
-                // Erfolgsfall
-if(DEBUG)		echo "<p class='debug'>Bild Upload ist aktiv ...</p>";
+                if(DEBUG)	echo "<p class='debug'>[POST-Blog] Bild für Upload-gefunden.</p>";
                 $imageUploadReturnArray = imageUpload($_FILES["image"]);
 
                 if( $imageUploadReturnArray["imageError"] ) {
-                    // Fehlerfall
-if(DEBUG)			echo "<p class='debug'>[FEHLER] $imageUploadReturnArray[imageError]</p>";
+                    // Fehler beim Upload
+
+                    if(DEBUG)		echo "<p class='debug'>[FEHLER] $imageUploadReturnArray[imageError]</p>";
                     $errorImageUpload = $imageUploadReturnArray["imageError"];
 
                 } else {
                     // Erfolgsfall
-if(DEBUG)			echo "<p class='debug'>Bild wurde erfolgreich auf dem Server geladen.</p>";
 
+                    if(DEBUG)		echo "<p class='debug'>Bild wurde erfolgreich auf dem Server geladen.</p>";
+                    // neunen Bildpfad speichern
+                    $imagePath = $imageUploadReturnArray["imagePath"];
+                    $editImage = true;
+                } // ENDE Bildpfad speichern
+            } // ENDE Bilddatei wurde ausgewählt
+
+        } else {
+            //Neuer Beitrag wird erstellt
+
+            if (!$_FILES["image"]["tmp_name"]) {
+
+                if (DEBUG) echo "<p class='debug'>[POST-Blog] Es wurde kein Bild für den Upload gefunden.</p>";
+                $errorImageUpload = "Es wurde kein Bild für den Upload gefunden.";
+
+            } else {
+                // Erfolgsfall Bilddatei gefunden
+
+                if (DEBUG) echo "<p class='debug'>[POST-Blog] Bild für Upload-gefunden.</p>";
+                $imageUploadReturnArray = imageUpload($_FILES["image"]);
+
+                if ($imageUploadReturnArray["imageError"]) {
+                    // Fehler beim Upload
+
+                    if (DEBUG) echo "<p class='debug'>[FEHLER] $imageUploadReturnArray[imageError]</p>";
+                    $errorImageUpload = $imageUploadReturnArray["imageError"];
+
+                } else {
+                    // Erfolgsfall
+
+                    if (DEBUG) echo "<p class='debug'>Bild wurde erfolgreich auf dem Server geladen.</p>";
                     // neunen Bildpfad speichern
                     $imagePath = $imageUploadReturnArray["imagePath"];
                 } // ENDE Bildpfad speichern
-            } // ENDE Bildausrichtung prüfen
-        } // ENDE Bilddatei wurde ausgewählt
-
+            } // ENDE Bilddatei wurde ausgewählt
+        }
         // Schritt 4 FORM: Daten Weiterverarbeiten
 
 
@@ -155,7 +204,7 @@ if(DEBUG)			echo "<p class='debug'>Bild wurde erfolgreich auf dem Server geladen
         if ( $errorImageUpload )  {
             // Fehlerfall beim ImageUpload, Datenbankschreiben abgebrochen
 if(DEBUG)	echo "<p class='debug'>[FEHLER] Es ist ein Fehler beim wurde ein Upload aufgetreten.</p>";
-            $dbMessage = "Bitte das Bild erneut auswählen und 'speichern' drücken.";
+            $errorImageUpload = "Bitte das Bild erneut auswählen und 'speichern' drücken.";
 
         } else {
             // Erfolgsfall
@@ -166,15 +215,24 @@ if(DEBUG)	echo "<p class='debug'>[FEHLER] Es ist ein Fehler beim wurde ein Uploa
                         INTO blogs ( blog_headline, blog_content, blog_image, blog_size, blog_company, cat_id) 
                         VALUES (:ph_blog_headline, :ph_blog_content, :ph_blog_image, :ph_blog_size, :ph_blog_company, :ph_cat_id)";
 
-            if( $action == "edit" ) {
+            if( $editPost ) {
                 $formSql = "UPDATE blogs
-											SET blog_headline			= :ph_blog_headline, 
-												blog_content			= :ph_blog_content, 
-												blog_image				= :ph_blog_image, 
-												blog_size		        = :ph_blog_size, 
-												blog_company            = :ph_blog_company,
-												cat_id					= :ph_cat_id
-											WHERE blog_id = :ph_blog_id";
+							SET blog_headline	= :ph_blog_headline, 
+								blog_content	= :ph_blog_content, 
+								blog_size		= :ph_blog_size, 
+								blog_company    = :ph_blog_company,
+								cat_id			= :ph_cat_id
+							WHERE blog_id = :ph_blog_id";
+            };
+            if( $editImage ) {
+                $formSql = "UPDATE blogs
+							SET blog_headline	= :ph_blog_headline, 
+								blog_content	= :ph_blog_content, 
+								blog_image		= :ph_blog_image, 
+								blog_size		= :ph_blog_size, 
+								blog_company    = :ph_blog_company,
+								cat_id			= :ph_cat_id
+							WHERE blog_id = :ph_blog_id";
             };
 
             $statement = $pdo->prepare($formSql);
@@ -188,14 +246,23 @@ if(DEBUG)	echo "<p class='debug'>[FEHLER] Es ist ein Fehler beim wurde ein Uploa
                                 "ph_blog_company" => $company
             );
 
-            if( $action == "edit") {
-                $formParams = array("ph_blog_id" => $blogList[0]["blog_id"],
-                                    "ph_blog_headline" => $headline,
+            if( $editPost ) {
+                $formParams = array("ph_blog_headline" => $headline,
                                     "ph_blog_content" => $content,
-                                    "ph_blog_image" => $imagePath,
                                     "ph_blog_size" => $size,
                                     "ph_cat_id" => $category,
-                                    "ph_usr_id" => $_SESSION["usr_id"]
+                                    "ph_blog_company" => $company,
+                                    "ph_blog_id" => $post
+                );
+            };
+            if ($editImage){
+                $formParams = array("ph_blog_headline" => $headline,
+                    "ph_blog_content" => $content,
+                    "ph_blog_size" => $size,
+                    "ph_blog_image" => $imagePath,
+                    "ph_cat_id" => $category,
+                    "ph_blog_company" => $company,
+                    "ph_blog_id" => $post
                 );
             };
 
@@ -203,7 +270,7 @@ if(DEBUG)	echo "<p class='debug'>[FEHLER] Es ist ein Fehler beim wurde ein Uploa
 
             // Schritt 4 DB: Daten weiterverarbeiten
             $successBlog = $pdo->lastInsertID();
-            if( $action == "edit") $successBlog = $statement->rowCount();
+            if( $editPost ) $successBlog = $statement->rowCount();
 
             if( !$successBlog){
                 // Fehlerfall
@@ -269,17 +336,24 @@ if(DEBUG)		echo "<p class='debug'>[POST-Blog] Ein Beitrag wurde in die Datenbank
         </ul>
     </aside>
     <article class="editor">
+        <?php if($editPost): ?>
+            <h3>Beitrag bearbeiten</h3>
+            <?php else: ?>
         <h3>Beitrag erstellen</h3>
+        <?php endif ?>
+
         <?= $dbMessage ?>
+
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="formsentNewPost">
 
             <input type="text"
-                   <?php if( $editPost ): ?>value="<?= $blogList[0]["blog_headline"] ?>"<?php elseif( !$editPost ): ?> value="<?= $headline ?>"<?php endif ?>
+                   <?php if($editPost) ?> value="<?= $editPost["blog_headline"] ?>"
                    name="headline" placeholder="Titel des Beitrages ..."><br>
             <span class="error"><?= $errorHeadline ?></span>
 
-            <textarea name="content" placeholder="Inhalt des Beitrages ..."><?php if( $editPost ): ?><?= $blogList[0]["blog_content"] ?><?php elseif( !$editPost ): ?><?= $content ?><?php endif ?></textarea><br>
+            <textarea name="content" placeholder="Inhalt des Beitrages ..."><?php if($editPost): ?><?= $editPost["blog_content"] ?> <?php endif ?>
+            </textarea><br>
             <span class="error"><?= $errorContent ?></span>
 
 
@@ -289,10 +363,9 @@ if(DEBUG)		echo "<p class='debug'>[POST-Blog] Ein Beitrag wurde in die Datenbank
                 <option value='' disabled>- - -</option>
 
                 <?php foreach( $catList AS $key=>$value ): ?>
-
                     <?php if( $editPost ): ?>
 
-                        <?php if( $catList[array_search($blogList[0]["cat_id"], array_column($catList, "cat_id"))]["cat_id"] == $value["cat_id"] ) {$selcted = "selected";}else {$selcted = NULL;} ?>
+                        <?php if( $catList[array_search($editPost[0]["cat_id"], array_column($catList, "cat_id"))]["cat_id"] == $value["cat_id"] ) {$selcted = "selected";}else {$selcted = NULL;} ?>
                         <option value="<?= $value["cat_id"] ?>"
                             <?= $selcted ?>><?= $value["cat_name"] ?></option>
 
@@ -303,13 +376,14 @@ if(DEBUG)		echo "<p class='debug'>[POST-Blog] Ein Beitrag wurde in die Datenbank
                             <?= $selcted ?>><?= $value["cat_name"] ?></option>
 
                     <?php endif ?>
-
                 <?php endforeach ?>
 
             </select><br>
             <span class="error"><?= $errorCategory ?></span>
 
-            <input type="text" name="company" placeholder="Kunde/Firma ..." value="<?= $company ?>"><br>
+            <input type="text"
+                <?php if($editPost) ?> value="<?= $editPost["blog_company"] ?>"
+                name="company" placeholder="Kunde/Firma ..."><br>
             <span class="error"><?= $errorCompany ?></span>
 
 
@@ -317,8 +391,8 @@ if(DEBUG)		echo "<p class='debug'>[POST-Blog] Ein Beitrag wurde in die Datenbank
             <span class="error"><?= $errorImageUpload ?></span>
 
             <select name="size" title="size">
-                <option value="small" <?php if( isset($size) && $size == "small" ) echo "selected" ?>>Kleiner Beitrag</option>
-                <option value="big" <?php if( isset($size) && $size == "big" ) echo "selected" ?>>Großer Beitrag</option>
+                <option value="small" <?php if( $editPost && $editPost["blog_size"] == "small" ) echo "selected" ?>>Kleiner Beitrag</option>
+                <option value="big" <?php if( $editPost && $editPost["blog_size"] == "big" ) echo "selected" ?>>Großer Beitrag</option>
             </select><br>
             <span class="error"><?= $errorSize ?></span>
 

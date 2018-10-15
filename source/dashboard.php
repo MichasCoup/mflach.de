@@ -20,6 +20,13 @@ $pdo = dbConnect();
 
 
 /*********************************************************************************************************************************************/
+/* Variablen Initialisieren ******************************************************************************************************************/
+/*********************************************************************************************************************************************/
+
+$editPost = false;
+$deletePost = false;
+
+/*********************************************************************************************************************************************/
 /* URL-Parameterverarbeitung *****************************************************************************************************************/
 /*********************************************************************************************************************************************/
 
@@ -44,7 +51,10 @@ if( isset($_GET["action"]) ) {
         header("Location: login.php");
         exit;
         // ENDE Verzweigung Logout
+    } elseif ($action == "edit") {
+        $editPost = true;
     }
+
 }
 
 /*********************************************************************************************************************************************/
@@ -73,18 +83,8 @@ if(DEBUG)			    echo "<p class='debug'>Kategorien wurden ausgelesen.</p>";
                     $sql = "SELECT blog_id, blog_headline, blog_image, blog_size, blog_content, blog_company, cat_name
                             FROM blogs 
                             INNER JOIN categories USING(cat_id) ";
-                    /*
-                    if( $deletePost ) 	$sql = "DELETE
-                                                FROM blogs
-                                                WHERE blog_id = :ph_blog_id";
-                    */
 
-                    // Params = NULL, da keine Platzhatlter verwendet werden
                     $params = NULL;
-
-                    /*
-                    if( $deletePost ) 	$params = $deleteParams;
-                    */
 
                     $sql .= " ORDER BY blogs.blog_date DESC";
 
@@ -95,19 +95,19 @@ if(DEBUG)			    echo "<p class='debug'>Kategorien wurden ausgelesen.</p>";
                     $statement->execute($params) OR DIE($statement-errorInfo()[2]);
 
                     // Schritt 4 DB: Daten weiterverarbeiten, alle Beiträge werden in ein mehrdimensionales Array gespeichert
+
                     if( $deletePost == true ) {
                         $deletePost = $statement->rowCount();
-if(DEBUG)			echo "<p class='debug'> Betrag wurden gelöscht.</p>";
+if(DEBUG)			    echo "<p class='debug'> Betrag wurden gelöscht.</p>";
                         $dbMessageBlog = "<h3 class='success'> $deletePost Beitrag wurde gelöscht.<h3>";
                     } else {
                         $blogList = $statement->fetchAll();
-if(DEBUG)			echo "<p class='debug'> Beträge wurden ausgelesen.</p>";
+if(DEBUG)			    echo "<p class='debug'> Beträge wurden ausgelesen.</p>";
                     }
 
-if(DEBUG)           echo "<pre class='debug'>";
-if(DEBUG)           print_r($blogList);
-if(DEBUG)           echo "</pre>";
-
+if(DEBUG)   echo "<pre class='debug'>";
+if(DEBUG)   print_r($blogList);
+if(DEBUG)   echo "</pre>";
 ?>
 
 
@@ -136,7 +136,7 @@ if(DEBUG)           echo "</pre>";
         </ul>
     </nav>
 </header>
-<main class="max-view">
+<main>
     <aside>
         <h3>Suchen</h3>
         <input type="text" >
@@ -156,7 +156,8 @@ if(DEBUG)           echo "</pre>";
                         <figcaption><?= $value["blog_headline"] ?></figcaption>
                     </figure>
                     <h4 class="disabled"><?= $value["cat_name"] ?> | <?= $value["blog_company"] ?></h4>
-                    <p class="disabled"><?= $value["blog_content"] ?></p>
+                    <p class="disabled"><?= nl2br($value["blog_content"]) ?>
+                    <br><br><a href="createPost.php?action=edit&id=<?= $value["blog_id"]?>">Bearbeiten</a> | <a href="?action=delete&id=<?= $value["blog_id"]?>">Löschen</a></p>
                 </div>
         <?php endforeach ?>
     </article>
